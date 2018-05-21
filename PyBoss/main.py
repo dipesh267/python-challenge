@@ -59,8 +59,8 @@ def get_state_abv(fname):
     
 input_file = os.path.join('employee_data1.csv')
 
-output_file = os.path.join('master.csv')
-
+output_file = os.path.join('master1.csv')
+master_list = []
 with open(input_file, 'r', newline='') as csvfile:
     data_file = csv.reader(csvfile, delimiter=',')
     #skip the first row of the csv becuase it's a header line
@@ -79,11 +79,15 @@ with open(input_file, 'r', newline='') as csvfile:
         ssn = row[3].split("-")
         ssn_formatted = "xxx-xx-"+ssn[2]
         state = get_state_abv(row[4])
-
-        master_dict = {
-            emp_id : [first_name,last_name,dob_formatted,ssn_formatted,state]
-        }
-        #print(master_dict)
+        
+        temp_list = [emp_id,first_name,last_name,dob_formatted,ssn_formatted,state]
+        master_list.append(temp_list)
+        
+        #master_dict does get loaded but can't seem to be able to iterate thru it to going the list route.
+        #master_dict = {
+        #    emp_id : [first_name,last_name,dob_formatted,ssn_formatted,state]
+        #}
+    #print(master_list[1])
 
 with open(output_file, 'w', newline='') as csvfile:
     # Initialize csv.writer
@@ -92,10 +96,5 @@ with open(output_file, 'w', newline='') as csvfile:
     # Write the first row (column headers)
     csvwriter.writerow(['Emp ID', 'First Name', 'Last Name', 'DOB', 'SSN', 'State'])
 
-    # Write the second row
-    for key, value in master_dict.items():
-        #print(key, value[0],value[1],value[2],value[3],value[4])
-        csvwriter.writerow([key, value[0],value[1],value[2],value[3],value[4]])
-
-
-
+    for name in master_list:
+        csvwriter.writerow([name[0],name[1],name[2],name[3],name[4],name[5]])
