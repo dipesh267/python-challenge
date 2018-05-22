@@ -1,8 +1,7 @@
 import os
+import re
 
 input_file = os.path.join('paragraph_1.txt')
-
-output_file = os.path.join('results.txt')
 
 with open(input_file, 'r') as file:
 
@@ -24,6 +23,8 @@ with open(input_file, 'r') as file:
     #split make the last list a blank item in the list so need to remove it.
     list_of_sentences.pop(num_of_sentences)
     
+    #import re
+    #print(re.split("(?&lt;=[.!?]) +", lines))
     #get total words per sentence
     words_per_sentence = 0
     for sentence in list_of_sentences:
