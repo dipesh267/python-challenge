@@ -7,9 +7,9 @@ def get_percentage(numerator, denominator):
     value = round(value, 2)
     return (str(value) + "%")
 
-input_file = os.path.join('election_data_1.csv')
+input_file = os.path.join('election_data_2.csv')
 
-output_file = os.path.join('results.csv')
+output_file = os.path.join('results.txt')
 master_dict = {}
 total_votes = 0
 winner = ""
@@ -33,25 +33,25 @@ with open(input_file, 'r', newline='') as csvfile:
         else:
             master_dict[candidate] = 1
 
-with open(output_file, 'w', newline='') as csvfile:
+with open(output_file, 'w', newline='') as file:
     # Write the first row (column headers)
-    csvfile.write("Election Results\n")
+    file.write("Election Results\n")
     print("Election Results")
-    csvfile.write("-------------------------\n")
+    file.write("-------------------------\n")
     print("-------------------------")
-    csvfile.write("Total Votes: " + str(total_votes) +"\n")
+    file.write("Total Votes: " + str(total_votes) +"\n")
     print("Total Votes: " + str(total_votes))
-    csvfile.write("-------------------------\n")
+    file.write("-------------------------\n")
     print("-------------------------")
     for politican in master_dict:
-        csvfile.write(politican + ": " + get_percentage(master_dict[politican],total_votes) + " ("+str(master_dict[politican])+")\n")
+        file.write(politican + ": " + get_percentage(master_dict[politican],total_votes) + " ("+str(master_dict[politican])+")\n")
         print(politican + ": " + get_percentage(master_dict[politican],total_votes) + " ("+str(master_dict[politican])+")")
         if master_dict[politican] > temp:
             temp = master_dict[politican]
             winner = politican
-    csvfile.write("-------------------------\n")
+    file.write("-------------------------\n")
     print("-------------------------")
-    csvfile.write("Winner: " + winner+"\n")
+    file.write("Winner: " + winner+"\n")
     print("Winner: " + winner)
-    csvfile.write("-------------------------\n")
+    file.write("-------------------------\n")
     print("-------------------------")
