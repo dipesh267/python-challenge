@@ -1,7 +1,12 @@
 import os
 import csv
 import datetime
-    
+
+def get_percentage(numerator, denominator):
+    value = (numerator/denominator)*100
+    value = round(value, 2)
+    return (str(value) + "%")
+
 input_file = os.path.join('election_data_1.csv')
 
 output_file = os.path.join('results.csv')
@@ -39,8 +44,8 @@ with open(output_file, 'w', newline='') as csvfile:
     csvfile.write("-------------------------\n")
     print("-------------------------")
     for politican in master_dict:
-        csvfile.write(politican + ": " + str(master_dict[politican])+"\n")
-        print(politican + ": " + str(master_dict[politican]))
+        csvfile.write(politican + ": " + get_percentage(master_dict[politican],total_votes) + " ("+str(master_dict[politican])+")\n")
+        print(politican + ": " + get_percentage(master_dict[politican],total_votes) + " ("+str(master_dict[politican])+")")
         if master_dict[politican] > temp:
             temp = master_dict[politican]
             winner = politican
