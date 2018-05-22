@@ -59,7 +59,7 @@ def get_state_abv(fname):
     
 input_file = os.path.join('employee_data1.csv')
 
-output_file = os.path.join('master1.csv')
+output_file = os.path.join('results.csv')
 master_list = []
 with open(input_file, 'r', newline='') as csvfile:
     data_file = csv.reader(csvfile, delimiter=',')
@@ -83,12 +83,6 @@ with open(input_file, 'r', newline='') as csvfile:
         temp_list = [emp_id,first_name,last_name,dob_formatted,ssn_formatted,state]
         master_list.append(temp_list)
         
-        #master_dict does get loaded but can't seem to be able to iterate thru it to going the list route.
-        #master_dict = {
-        #    emp_id : [first_name,last_name,dob_formatted,ssn_formatted,state]
-        #}
-    #print(master_list[1])
-
 with open(output_file, 'w', newline='') as csvfile:
     # Initialize csv.writer
     csvwriter = csv.writer(csvfile, delimiter=',')
