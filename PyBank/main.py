@@ -1,7 +1,7 @@
 import os
 import csv
 import datetime
-
+#testing testing
 file_path = os.path.join('budget_data_1.csv')
 output_file = os.path.join('results.txt')
 master_list = []
@@ -33,17 +33,17 @@ with open(file_path,'r',newline='') as csvfile:
         rev_year = rev_date.year
         rev_month = rev_date.month
         revenue = int(row[1])
-        
+
         if revenue > greatest_increase:
             greatest_increase = revenue
-            greatest_increase_date = rev_date.strftime("%b-%y") 
-        
+            greatest_increase_date = rev_date.strftime("%b-%y")
+
         if revenue < greatest_decrease:
             greatest_decrease = revenue
             greatest_decrease_date = rev_date.strftime("%b-%y")
 
         total_revenue += revenue
-        
+
         master_list.append([rev_year, rev_month, revenue])
 
 average_revenue = '{0:.2f}'.format(total_revenue/total_months)
