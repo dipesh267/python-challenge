@@ -7,7 +7,7 @@ def get_percentage(numerator, denominator):
     value = round(value, 2)
     return (str(value) + "%")
 
-input_file = os.path.join('election_data_2.csv')
+input_file = os.path.join('election_data_1.csv')
 
 output_file = os.path.join('results.txt')
 master_dict = {}
@@ -44,8 +44,10 @@ with open(output_file, 'w', newline='') as file:
     file.write("-------------------------\n")
     print("-------------------------")
     for politican in master_dict:
-        file.write(politican + ": " + get_percentage(master_dict[politican],total_votes) + " ("+str(master_dict[politican])+")\n")
-        print(politican + ": " + get_percentage(master_dict[politican],total_votes) + " ("+str(master_dict[politican])+")")
+        file.write(politican + ": " + get_percentage(master_dict[politican],total_votes)
+            + " ("+str(master_dict[politican])+")\n")
+        print(politican + ": " + get_percentage(master_dict[politican],total_votes)
+            + " ("+str(master_dict[politican])+")")
         if master_dict[politican] > temp:
             temp = master_dict[politican]
             winner = politican
