@@ -1,7 +1,7 @@
 import os
 import csv
 import datetime
-#testing testing
+
 file_path = os.path.join('budget_data_1.csv')
 output_file = os.path.join('results.txt')
 master_list = []
